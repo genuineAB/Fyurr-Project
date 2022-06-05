@@ -36,7 +36,7 @@ class Venue(db.Model):
     website_link = db.Column(db.String(120), nullable=False)
     seeking_talent = db.Column(db.Boolean, nullable=False, default=False)
     seeking_description = db.Column(db.String(500), nullable = False)
-    genres = db.Column(db.String(), nullable=False)
+    genres = db.Column(db.JSON, nullable=False, default=[])
     shows = db.relationship('Show', backref='venue', lazy=False)
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
@@ -49,7 +49,7 @@ class Artist(db.Model):
     city = db.Column(db.String(120), nullable=False)
     state = db.Column(db.String(120),  nullable=False)
     phone = db.Column(db.String(120),  nullable=False)
-    genres = db.Column(db.String(120),  nullable=False)
+    genres = db.Column(db.JSON,  nullable=False, default=[])
     image_link = db.Column(db.String(500),  nullable=False)
     facebook_link = db.Column(db.String(120),  nullable=False)
     website_link = db.Column(db.String(120), nullable=False)
